@@ -19,6 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.yunhaoguo.tinnews.common.TinBasicActivity;
+import com.yunhaoguo.tinnews.common.TinBasicFragment;
 
 public class WebViewActivity extends TinBasicActivity implements PopupMenu.OnMenuItemClickListener {
     public static final String URL = "url";
@@ -113,6 +114,11 @@ public class WebViewActivity extends TinBasicActivity implements PopupMenu.OnMen
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void doFragmentTransaction(TinBasicFragment basicFragment) {
+
     }
 
     @Override
