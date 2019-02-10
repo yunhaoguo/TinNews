@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.yunhaoguo.tinnews.R;
 import com.yunhaoguo.tinnews.save.SavedNewsFragment;
+import com.yunhaoguo.tinnews.tin.TinGalleryFragment;
 
 public class ContainerFragment extends TinBasicFragment {
 
@@ -41,7 +42,7 @@ public class ContainerFragment extends TinBasicFragment {
     private static Fragment createInitFragmentByIndex(int pageIndex) {
         switch (pageIndex) {
             case HOME_PAGE:
-                return null;
+                return TinGalleryFragment.newInstance();
             case SAVE_PAGE:
                 return SavedNewsFragment.newInstance();
             case PROFILE_PAGE:
@@ -92,5 +93,6 @@ public class ContainerFragment extends TinBasicFragment {
                 return -1;
         }
     }
+
 
 }
