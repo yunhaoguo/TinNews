@@ -11,7 +11,14 @@ import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.yunhaoguo.tinnews.R;
 import com.yunhaoguo.tinnews.common.TinBasicFragment;
+import com.yunhaoguo.tinnews.retrofit.NewsRequestApi;
+import com.yunhaoguo.tinnews.retrofit.RetrofitClient;
 import com.yunhaoguo.tinnews.retrofit.response.News;
+
+import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,17 +63,28 @@ public class TinGalleryFragment extends TinBasicFragment implements TinNewsCard.
             }
         });
 
-        for (int i = 0; i < 50; i++) {
-            News news = new News();
-            news.image = "";
-            news.title = "Liu yi fei";
-            news.description = "hao piaolinag";
-            news.author = "guodage";
+        getData();
+
+        return view;
+    }
+
+    private void getData() {
+        RetrofitClient.getInstance().create(NewsRequestApi.class).getNewsByCountry("us")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .filter(baseResponse -> baseResponse != null && baseResponse.articles != null)
+                .subscribe(baseResponse -> {
+                    showNewsCard(baseResponse.articles);
+                }, error -> {
+
+                });
+    }
+
+    private void showNewsCard(List<News> newsList) {
+        for (News news : newsList) {
             TinNewsCard tinNewsCard = new TinNewsCard(news, mSwipeView, this);
             mSwipeView.addView(tinNewsCard);
         }
-
-        return view;
     }
 
     @Override

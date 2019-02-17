@@ -10,13 +10,18 @@ package com.yunhaoguo.tinnews.retrofit.response;
 
 import android.support.annotation.NonNull;
 
+import com.google.gson.annotations.SerializedName;
+
 public class News {
+
     public String author;
     @NonNull
     public String title;
     public String description;
     public String url;
+    @SerializedName("urlToImage")
     public String image;
+    @SerializedName("publishedAt")
     public String time;
 
     public News() {
