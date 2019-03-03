@@ -59,7 +59,7 @@ public class SavedNewsAdapter extends RecyclerView.Adapter<SavedNewsAdapter.Save
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentManager.doFragmentTransaction(SavedNewsDetailedFragment.newInstance());
+                fragmentManager.doFragmentTransaction(SavedNewsDetailedFragment.newInstance(news));
             }
         });
     }

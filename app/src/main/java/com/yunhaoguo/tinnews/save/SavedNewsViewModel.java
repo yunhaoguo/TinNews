@@ -48,7 +48,7 @@ public class SavedNewsViewModel extends BaseViewModel<SavedNewsViewModel.SavedNe
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tinFragmentManager.doFragmentTransaction(SavedNewsDetailedFragment.newInstance());
+                tinFragmentManager.doFragmentTransaction(SavedNewsDetailedFragment.newInstance(news));
             }
         });
     }

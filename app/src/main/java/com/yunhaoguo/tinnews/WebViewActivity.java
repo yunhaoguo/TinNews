@@ -30,16 +30,13 @@ public class WebViewActivity extends TinBasicActivity implements PopupMenu.OnMen
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //back button
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
-        //progress
         progressBar = findViewById(R.id.progress_bar);
-        //web view
         final WebView webView = findViewById(R.id.web_view);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebChromeClient(new WebChromeClient());
@@ -58,16 +55,18 @@ public class WebViewActivity extends TinBasicActivity implements PopupMenu.OnMen
                 progressBar.setVisibility(View.GONE);
             }
         });
-//        Bundle bundle = getIntent().getExtras();
-//        if (bundle != null) {
-//            Bundle innerBundle = bundle.getBundle(BUNDLE);
-//            if (innerBundle != null) {
-//                url = innerBundle.getString(URL);
-//                webView.loadUrl(url);
-//            }
-//        }
-        url = "https://www.google.com";
-        webView.loadUrl(url);
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            Bundle innerBundle = bundle.getBundle(BUNDLE);
+            if (innerBundle != null) {
+                url = innerBundle.getString(URL);
+                webView.loadUrl(url);
+            }
+        }
+//        url = "https://www.google.com";
+//        webView.loadUrl(url);
+
 
         findViewById(R.id.more).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +74,7 @@ public class WebViewActivity extends TinBasicActivity implements PopupMenu.OnMen
                 showMenu(v);
             }
         });
+
     }
 
     @Override
