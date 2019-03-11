@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.yunhaoguo.tinnews.R;
+import com.yunhaoguo.tinnews.profile.TinProfileFragment;
 import com.yunhaoguo.tinnews.save.SavedNewsFragment;
 import com.yunhaoguo.tinnews.tin.TinGalleryFragment;
 
@@ -46,9 +47,9 @@ public class ContainerFragment extends TinBasicFragment {
             case SAVE_PAGE:
                 return SavedNewsFragment.newInstance();
             case PROFILE_PAGE:
-                return null;
+                return TinProfileFragment.newInstance();
             default:
-                return null;
+                throw  new IndexOutOfBoundsException();
         }
     }
 
