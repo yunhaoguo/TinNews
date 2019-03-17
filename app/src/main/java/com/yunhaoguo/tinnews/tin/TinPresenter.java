@@ -38,11 +38,12 @@ public class TinPresenter implements TinContract.Presenter {
     @Override
     public void onViewDetached() {
         this.view = null;
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
     public void onDestroy() {
-        EventBus.getDefault().unregister(this);
+
     }
 
     @Override
